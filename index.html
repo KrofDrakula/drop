@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1" />
+  <style>
+    .container {
+      position: fixed;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #drop_target {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50%;
+      height: 50%;
+      outline: 1px dashed #ccc;
+    }
+
+    @keyframes grow-shrink {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .over {
+      background: #00f5;
+      animation: grow-shrink 0.5s ease-in-out infinite;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div id="drop_target">Drop your files here</div>
+  </div>
+  <script type="module" src="./src/example.ts"></script>
+</body>
+
+</html>

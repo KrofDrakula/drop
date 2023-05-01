@@ -1,0 +1,28 @@
+{
+  "name": "@krofdrakula/drop",
+  "version": "0.0.1",
+  "description": "Implement file dropping easily",
+  "type": "module",
+  "module": "./dist/index.js",
+  "main": "./dist/index.umd.cjs",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.umd.cjs"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "test": "vitest"
+  },
+  "author": "Klemen Slavič <krof.drakula@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^5.0.4",
+    "vite": "^4.3.3",
+    "vite-plugin-dts": "^2.3.0",
+    "vitest": "^0.30.1"
+  }
+}
