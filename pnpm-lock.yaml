@@ -4,6 +4,9 @@ devDependencies:
   '@changesets/cli':
     specifier: ^2.26.1
     version: 2.26.1
+  '@types/dom-webcodecs':
+    specifier: ^0.1.7
+    version: 0.1.7
   typescript:
     specifier: ^5.0.4
     version: 5.0.4
@@ -607,6 +610,10 @@ packages:
 
   /@types/chai@4.3.5:
     resolution: {integrity: sha512-mEo1sAde+UCE6b2hxn332f1g1E8WfYRu6p5SvTKr2ZKC1f7gFJXk4h5PyGP9Dt6gCaG8y8XhwnXWC6Iy2cmBng==}
+    dev: true
+
+  /@types/dom-webcodecs@0.1.7:
+    resolution: {integrity: sha512-1euwRyJ7rQrddOa24d5ZcoDRMp68xEIwyb7PKb3Wpc2OullUxHQ4a63WPa5V8R+KtCWISKjgS+f83HCUVhXS/w==}
     dev: true
 
   /@types/estree@1.0.1:
