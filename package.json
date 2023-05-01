@@ -25,6 +25,7 @@
   "homepage": "https://github.com/KrofDrakula/drop#readme",
   "type": "module",
   "main": "./dist/index.umd.cjs",
+  "module": "./dist/index.js",
   "exports": {
     ".": {
       "import": "./dist/index.js",
