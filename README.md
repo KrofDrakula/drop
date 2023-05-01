@@ -8,6 +8,8 @@
 
 A small utility to make consuming files dragged into a browser a breeze.
 
+![Bryan Cranston dropping a mic](https://media.giphy.com/media/3o72Fk2eBOXRDhoq9W/giphy.gif)
+
 ## Usage
 
 Install the package as a direct dependency:
