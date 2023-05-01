@@ -4,7 +4,6 @@
 ![Types](https://badgen.net/npm/types/@krofdrakula/drop)
 ![GZip size](https://badgen.net/bundlephobia/minzip/@krofdrakula/drop)
 ![Dependency count](https://badgen.net/bundlephobia/dependency-count/@krofdrakula/drop)
-![Tree shaking](https://badgen.net/bundlephobia/tree-shaking/@krofdrakula/drop)
 
 A small utility to make consuming files dragged into a browser a breeze.
 
