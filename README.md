@@ -9,6 +9,8 @@ A small utility to make consuming files dragged into a browser a breeze.
 
 ![Bryan Cranston dropping a mic](https://media.giphy.com/media/3o72Fk2eBOXRDhoq9W/giphy.gif)
 
+[Changelog](CHANGELOG.md)
+
 ## TL;DR
 
 ```ts
