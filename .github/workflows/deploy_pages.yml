@@ -17,7 +17,7 @@ jobs:
           node-version: "18.x"
           cache: "pnpm"
       - run: pnpm install
-      - run: pnpm run build-demo -- --base=/drop
+      - run: vite build ./demo --base=/drop/
       - uses: actions/upload-pages-artifact@v1
         with:
           path: "site"
