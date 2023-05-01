@@ -1,6 +1,6 @@
 {
   "name": "@krofdrakula/drop",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": false,
   "publishConfig": {
     "access": "public"
@@ -25,7 +25,6 @@
   "homepage": "https://github.com/KrofDrakula/drop#readme",
   "type": "module",
   "main": "./dist/index.umd.cjs",
-  "module": "./dist/index.js",
   "exports": {
     ".": {
       "import": "./dist/index.js",
