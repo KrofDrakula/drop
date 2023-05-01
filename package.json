@@ -38,9 +38,13 @@
     "build": "vite build",
     "dev": "vite",
     "test": "vitest",
-    "prepublish": "vite build"
+    "prepublish": "vite build",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "publish": "changeset publish"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.26.1",
     "typescript": "^5.0.4",
     "vite": "^4.3.3",
     "vite-plugin-dts": "^2.3.0",
