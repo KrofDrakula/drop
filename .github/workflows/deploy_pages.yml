@@ -17,7 +17,7 @@ jobs:
           node-version: "18.x"
           cache: "pnpm"
       - run: pnpm install
-      - run: pnpm run build-site
+      - run: pnpm run build-demo
       - uses: actions/upload-pages-artifact@v1
         with:
           path: "site"
