@@ -4,5 +4,6 @@
     "declaration": true,
     "module": "ESNext",
     "lib": ["DOM", "ESNext"]
-  }
+  },
+  "include": ["src"]
 }

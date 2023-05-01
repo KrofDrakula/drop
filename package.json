@@ -1,6 +1,6 @@
 {
   "name": "@krofdrakula/drop",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "private": false,
   "publishConfig": {
     "access": "public"
@@ -36,7 +36,8 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite",
-    "test": "vitest"
+    "test": "vitest",
+    "prepublish": "vite build"
   },
   "devDependencies": {
     "typescript": "^5.0.4",
