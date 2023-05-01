@@ -19,7 +19,7 @@
   },
   "author": "Klemen Slavič <krof.drakula@gmail.com>",
   "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
     "typescript": "^5.0.4",
     "vite": "^4.3.3",
     "vite-plugin-dts": "^2.3.0",

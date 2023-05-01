@@ -114,6 +114,7 @@ export const create = <T>(
   element.addEventListener("dragleave", onDragLeave);
 
   return () => {
+    options.onDragLeave?.(element);
     element.removeEventListener("drop", onDrop);
     element.removeEventListener("dragover", onDragOver);
     element.removeEventListener("dragleave", onDragLeave);
