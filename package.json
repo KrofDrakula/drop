@@ -1,6 +1,10 @@
 {
   "name": "@krofdrakula/drop",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "Klemen Slavič <krof.drakula@gmail.com>",
   "description": "File dropping made simple",
   "license": "MIT",
@@ -11,21 +15,22 @@
     "upload",
     "parsing"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KrofDrakula/drop.git"
+  },
   "bugs": {
     "url": "https://github.com/KrofDrakula/drop/issues"
   },
   "homepage": "https://github.com/KrofDrakula/drop#readme",
   "type": "module",
-  "private": false,
-  "publishConfig": {
-    "access": "public"
-  },
-  "module": "./dist/index.js",
   "main": "./dist/index.umd.cjs",
+  "module": "./dist/index.js",
   "exports": {
     ".": {
       "import": "./dist/index.js",
-      "require": "./dist/index.umd.cjs"
+      "require": "./dist/index.umd.cjs",
+      "default": "./dist.index.js"
     }
   },
   "types": "./dist/index.d.ts",
