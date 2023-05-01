@@ -10,6 +10,15 @@ A small utility to make consuming files dragged into a browser a breeze.
 
 ![Bryan Cranston dropping a mic](https://media.giphy.com/media/3o72Fk2eBOXRDhoq9W/giphy.gif)
 
+## TL;DR
+
+```ts
+import { create } from "@krofdrakula/drop";
+create(document.getElementById("drop_target"), {
+  onDrop: (files) => console.log(files),
+});
+```
+
 ## Usage
 
 Install the package as a direct dependency:
@@ -54,6 +63,20 @@ This will log out all files dropped onto the `#drop_target` element in the conso
 
 Calling the function returned (`deactivate`) will remove the event handlers and reset the element to its previous state.
 
+### Styling the element
+
+`create` options let you hook into events that trigger when files are dragged over or dragged outside of the given element.
+
+For example, you can add or remove a class name when files are over a drop target:
+
+```ts
+create(myDiv, {
+  onDrop: () => {},
+  onDragOver: (element) => element.classList.add("over"),
+  onDragLeave: (element) => element.classList.remove("over"),
+});
+```
+
 ### Transforming files
 
 By default, all of the files will be passed through as [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File) objects. If you expect files to be have a particular type of content, you can provide a `parse` function that will transform the contents into a more convenient form:
@@ -74,8 +97,8 @@ If any file provided triggers a parsing errors, the `onDrop` handler will not be
 
 This package currently provides two helper functions to parse files:
 
-- `asText` — transforms each file content into a single string
-- `asJSON` — parses each file content into its JSON value
+- [`asText`](src/drop.ts) — transforms each file content into a single string
+- [`asJSON`](src/drop.ts) — parses each file content into its JSON value
 
 You can pass any function that takes a [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File) object and returns any value.
 
