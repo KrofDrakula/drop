@@ -1,8 +1,25 @@
 {
   "name": "@krofdrakula/drop",
   "version": "0.0.1",
-  "description": "Implement file dropping easily",
+  "author": "Klemen Slavič <krof.drakula@gmail.com>",
+  "description": "File dropping made simple",
+  "license": "MIT",
+  "keywords": [
+    "typescript",
+    "browser",
+    "file",
+    "upload",
+    "parsing"
+  ],
+  "bugs": {
+    "url": "https://github.com/KrofDrakula/drop/issues"
+  },
+  "homepage": "https://github.com/KrofDrakula/drop#readme",
   "type": "module",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "module": "./dist/index.js",
   "main": "./dist/index.umd.cjs",
   "exports": {
@@ -17,8 +34,6 @@
     "dev": "vite",
     "test": "vitest"
   },
-  "author": "Klemen Slavič <krof.drakula@gmail.com>",
-  "license": "MIT",
   "devDependencies": {
     "typescript": "^5.0.4",
     "vite": "^4.3.3",
