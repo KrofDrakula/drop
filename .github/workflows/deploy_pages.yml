@@ -13,6 +13,7 @@ jobs:
         with:
           node-version: "18.x"
           cache: "pnpm"
+      - uses: pnpm/action-setup@v2
       - run: pnpm install
       - run: pnpm run build-site
       - uses: actions/upload-pages-artifact@v1
