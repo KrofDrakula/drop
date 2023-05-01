@@ -36,7 +36,8 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "vite build",
-    "dev": "vite",
+    "dev": "vite ./demo",
+    "build-demo": "vite build ./demo",
     "test": "vitest",
     "prepublish": "vite build",
     "changeset": "changeset",
@@ -46,9 +47,14 @@
   "devDependencies": {
     "@changesets/cli": "^2.26.1",
     "@types/dom-webcodecs": "^0.1.7",
+    "@types/prismjs": "^1.26.0",
+    "dedent": "^0.7.0",
+    "preact": "^10.13.2",
+    "prismjs": "^1.29.0",
     "typescript": "^5.0.4",
     "vite": "^4.3.3",
     "vite-plugin-dts": "^2.3.0",
+    "vite-plugin-prismjs": "^0.0.8",
     "vitest": "^0.30.1"
   }
 }

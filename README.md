@@ -34,7 +34,7 @@ The package provides both CommonJS and ES module versions.
 
 The `create` function takes the following options:
 
-|               |            |                                                                                                                                                                                                  |
+| Parameter     |            | Description                                                                                                                                                                                      |
 | ------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `onDrop`      | _required_ | The function that will be called when files are dropped onto the given element. When a `parse` function is provided, the files will be transformed from `File` to whatever the function returns. |
 | `onError`     | _optional_ | An optional error handler that will capture errors produced when calling the `parse` function.                                                                                                   |

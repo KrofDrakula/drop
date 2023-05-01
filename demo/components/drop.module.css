@@ -1,0 +1,13 @@
+.drop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 8em;
+  border-radius: 8px;
+  background: #fff4;
+  transition: all 100ms ease-in-out;
+}
+
+.over {
+  transform: scale(1.05);
+}

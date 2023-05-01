@@ -1,11 +1,11 @@
-interface Options<T> {
+export interface Options<T> {
   /**
    * The function that will be called when files are dropped
    * onto the given element. When a `parse` function is provided,
    * the files will be transformed from `File` to whatever the
    * function returns.
    */
-  onDrop: (files: T[]) => void;
+  onDrop: (files: Map<string, T>) => void;
   /**
    * An optional error handler that will capture errors produced
    * when calling the `parse` function.
@@ -69,10 +69,14 @@ export const create = <T>(
     if (files.length == 0) return;
     if (options.parse) {
       Promise.all(files.map(options.parse))
-        .then(options.onDrop)
+        .then((transformed) => {
+          options.onDrop(
+            new Map(transformed.map((t, idx) => [files[idx].name, t]))
+          );
+        })
         .catch(options.onError);
     } else {
-      options.onDrop(files as T[]);
+      options.onDrop(new Map(files.map((f) => [f.name, f as T])));
     }
   };
 

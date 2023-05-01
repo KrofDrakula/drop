@@ -1,22 +1,19 @@
 import { resolve } from "node:path";
 import { defineConfig } from "vite";
-import dts from "vite-plugin-dts";
 import { prismjsPlugin } from "vite-plugin-prismjs";
 
 export default defineConfig(() => {
   return {
+    root: resolve(__dirname, "src/demo"),
     build: {
-      lib: {
-        entry: {
-          index: resolve(__dirname, "src/index.ts"),
-        },
-        name: "drop",
-      },
-      sourcemap: true,
       target: "esnext",
       emptyOutDir: true,
-      reportCompressedSize: true,
+      outDir: resolve(__dirname, "../site"),
     },
-    plugins: [dts()],
+    css: {
+      modules: true,
+    },
+
+    plugins: [prismjsPlugin({ languages: ["ts"] })],
   };
 });
