@@ -20,6 +20,17 @@ const Preview = <T,>({ files, onClose }: Props<T>): JSX.Element => {
       if (current.type.startsWith("image/")) {
         const url = URL.createObjectURL(current);
         setContent(<img src={url} />);
+      } else if (current.type.startsWith("video/")) {
+        const url = URL.createObjectURL(current);
+        setContent(
+          <video
+            src={url}
+            autoPlay={true}
+            muted={true}
+            controls={true}
+            loop={true}
+          />
+        );
       } else if (current.type.startsWith("text/") && current.size < 2e5) {
         current.text().then((str) => setContent(<code>{str}</code>));
       } else {
