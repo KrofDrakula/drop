@@ -36,7 +36,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "vite build",
-    "dev": "vite ./demo",
+    "dev": "vite ./demo --host 0.0.0.0",
     "build-demo": "vite build ./demo",
     "test": "vitest",
     "prepublish": "vite build",
