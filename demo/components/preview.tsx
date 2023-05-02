@@ -37,7 +37,7 @@ const Preview = <T,>({ files, onClose }: Props<T>): JSX.Element => {
           ))}
         </div>
 
-        <div>{content}</div>
+        <div class={styles.content}>{content}</div>
       </div>
       <button class={styles.close} onClick={onClose}>
         Close

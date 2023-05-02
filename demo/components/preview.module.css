@@ -19,6 +19,7 @@
 .grid {
   display: grid;
   grid-template-rows: 2em 1fr;
+  max-height: 100%;
 }
 
 .tabs {
@@ -39,4 +40,10 @@
   position: relative;
   background: #00f4;
   z-index: 2;
+}
+
+.content {
+  white-space: pre;
+  overflow-y: auto;
+  border: 1px solid #666;
 }
