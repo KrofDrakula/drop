@@ -2,33 +2,33 @@ import { FunctionalComponent } from "preact";
 import styles from "./display.module.css";
 import Code from "./code.js";
 import { useCallback, useState } from "preact/hooks";
-import dedent from "dedent";
 import Drop from "./drop.js";
 
-const getCode = (animate: boolean) => {
+const getCode = (animate: boolean, parse?: "text" | "json") => {
+  const imports = ["create"];
+
+  let blocks = "";
+
   if (animate) {
-    return dedent`
-      import { create } from '@krofdrakula/drop';
-
-      const container = document.getElementById('drop-target')!;
-
-      create(container, {
-        onDrop: (files) => console.log(files),
-        onDragOver: (el) => el.classList.add('over'),
-        onDragLeave: (el) => el.classList.remove('over')
-      });
-    `;
-  } else {
-    return dedent`
-      import { create } from '@krofdrakula/drop';
-
-      const container = document.getElementById('drop-target')!;
-
-      create(container, {
-        onDrop: (files) => console.log(files)
-      });
-    `;
+    blocks += `  onDragOver: (el) => el.classList.add('over'),
+  onDragLeave: (el) => el.classList.remove('over'),\n`;
   }
+  if (parse == "text") {
+    imports.push("asText");
+    blocks += `  parse: asText,\n`;
+  } else if (parse == "json") {
+    imports.push("asJSON");
+    blocks += `  parse: asJSON,\n`;
+  }
+
+  return `import { ${imports.join(", ")} } from '@krofdrakula/drop';
+
+const container = document.getElementById('drop-target')!;
+
+create(container, {
+  onDrop: (files) => console.log(files),
+${blocks}});
+`;
 };
 
 const Display: FunctionalComponent = () => {
@@ -98,18 +98,6 @@ const Display: FunctionalComponent = () => {
                 JSON
               </label>
             </li>
-            <li>
-              <label>
-                <input
-                  type="radio"
-                  name="parse"
-                  value="image"
-                  checked={parse == "image"}
-                  onInput={handleRadio}
-                />{" "}
-                Image
-              </label>
-            </li>
           </ul>
         </div>
       </div>
@@ -117,7 +105,7 @@ const Display: FunctionalComponent = () => {
         <Drop animate={animate} parse={parse} />
       </div>
       <div class={styles.code}>
-        <Code>{getCode(animate)}</Code>
+        <Code>{getCode(animate, parse)}</Code>
       </div>
     </div>
   );

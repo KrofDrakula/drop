@@ -1,3 +1,14 @@
+@keyframes grow-in {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 .frame {
   position: fixed;
   box-sizing: border-box;
@@ -8,6 +19,7 @@
   padding: 42px;
   background: white;
   color: black;
+  animation: grow-in 150ms ease-out forwards;
 }
 
 .close {
@@ -40,10 +52,18 @@
   position: relative;
   background: #00f4;
   z-index: 2;
+  border-bottom: 1px solid white;
 }
 
 .content {
   white-space: pre;
   overflow-y: auto;
   border: 1px solid #666;
+  margin-top: -1px;
+  font-size: 14px;
+}
+
+.content img,
+.content canvas {
+  max-width: 100%;
 }

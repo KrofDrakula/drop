@@ -48,7 +48,6 @@
     "@changesets/cli": "^2.26.1",
     "@types/dom-webcodecs": "^0.1.7",
     "@types/prismjs": "^1.26.0",
-    "dedent": "^0.7.0",
     "preact": "^10.13.2",
     "prismjs": "^1.29.0",
     "typescript": "^5.0.4",

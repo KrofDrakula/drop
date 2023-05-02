@@ -1,6 +1,7 @@
 import type { ComponentChild, JSX } from "preact";
 import styles from "./preview.module.css";
-import { useState } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
+import Code from "./code.js";
 
 interface Props<T> {
   files: Map<string, T>;
@@ -11,14 +12,32 @@ const Preview = <T,>({ files, onClose }: Props<T>): JSX.Element => {
   const names = [...files.keys()];
   const [active, setActive] = useState(names[0]);
   const current = files.get(active);
-  let content: ComponentChild = null;
-  if (typeof current == "string") {
-    content = <code>{current}</code>;
-  } else if (current instanceof File) {
-    content = <code>[File, {current.size} bytes]</code>;
-  } else if (current instanceof VideoFrame) {
-    content = <code>[Image]</code>;
-  }
+
+  const [content, setContent] = useState<ComponentChild | null>(null);
+
+  useEffect(() => {
+    if (current instanceof File) {
+      if (current.type.startsWith("image/")) {
+        const url = URL.createObjectURL(current);
+        setContent(<img src={url} />);
+      } else if (current.type.startsWith("text/") && current.size < 2e5) {
+        current.text().then((str) => setContent(<code>{str}</code>));
+      } else {
+        setContent(
+          <code>
+            [File {current.type}, {current.size} bytes]
+          </code>
+        );
+      }
+    } else if (typeof current == "string") {
+      setContent(<code>{current}</code>);
+    } else {
+      setContent(
+        <Code language="json">{JSON.stringify(current, null, 2)}</Code>
+      );
+    }
+  }, [current]);
+
   return (
     <div class={styles.frame}>
       <div class={styles.grid}>

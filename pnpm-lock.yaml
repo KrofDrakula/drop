@@ -10,9 +10,6 @@ devDependencies:
   '@types/prismjs':
     specifier: ^1.26.0
     version: 1.26.0
-  dedent:
-    specifier: ^0.7.0
-    version: 0.7.0
   preact:
     specifier: ^10.13.2
     version: 10.13.2
@@ -1248,10 +1245,6 @@ packages:
   /decamelize@1.2.0:
     resolution: {integrity: sha512-z2S+W9X73hAUUki+N+9Za2lBlun89zigOyGrsax+KUQ6wKW4ZoWpEYBkGhQjwAjjDCkWxhY0VKEhk8wzY7F5cA==}
     engines: {node: '>=0.10.0'}
-    dev: true
-
-  /dedent@0.7.0:
-    resolution: {integrity: sha512-Q6fKUPqnAHAyhiUgFU7BUzLiv0kd8saH9al7tnu5Q/okj6dnupxyTgFIBjVzJATdfIAm9NAsvXNzjaKa+bxVyA==}
     dev: true
 
   /deep-eql@4.1.3:

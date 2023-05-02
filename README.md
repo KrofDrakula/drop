@@ -100,7 +100,6 @@ This package currently provides two helper functions to parse files:
 
 - [`asText`](src/parsers.ts) — transforms each file content into a single string
 - [`asJSON`](src/parsers.ts) — parses each file content into its JSON value
-- [`asImage`](src/parsers.ts) — parses each file and returns a [`VideoFrame`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame) that can be drawn to a canvas (NOTE: this is not polyfilled for unsupported browsers)
 
 You can pass any function that takes a [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File) object and returns any value.
 

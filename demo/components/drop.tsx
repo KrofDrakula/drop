@@ -1,5 +1,5 @@
 import { FunctionalComponent } from "preact";
-import { create, asText, asJSON, asImage, Options } from "../../src/index.js";
+import { create, asText, asJSON, Options } from "../../src/index.js";
 import { useEffect, useRef, useState } from "preact/hooks";
 import styles from "./drop.module.css";
 import Preview from "./preview.js";
@@ -27,8 +27,6 @@ const Drop: FunctionalComponent<Props> = ({ animate, parse }) => {
       options.parse = asText;
     } else if (parse == "json") {
       options.parse = asJSON;
-    } else if (parse == "image") {
-      options.parse = asImage;
     }
     return create(container.current, options);
   }, [container.current, animate, parse]);

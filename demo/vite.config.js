@@ -14,6 +14,6 @@ export default defineConfig(() => {
       modules: true,
     },
 
-    plugins: [prismjsPlugin({ languages: ["ts"] })],
+    plugins: [prismjsPlugin({ languages: ["ts", "json"] })],
   };
 });
