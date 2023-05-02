@@ -1,5 +1,11 @@
 # @krofdrakula/drop
 
+## 0.0.7
+
+### Patch Changes
+
+- Removed ImageDecoder helper, improved demo site
+
 ## 0.0.6
 
 ### Patch Changes
