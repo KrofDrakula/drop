@@ -7,9 +7,10 @@ import Preview from "./preview.js";
 interface Props {
   animate: boolean;
   parse?: "text" | "json" | "image";
+  filePicker: boolean;
 }
 
-const Drop: FunctionalComponent<Props> = ({ animate, parse }) => {
+const Drop: FunctionalComponent<Props> = ({ animate, parse, filePicker }) => {
   const container = useRef<HTMLDivElement>();
 
   const [files, setFiles] = useState<Map<string, unknown> | null>(null);
@@ -28,8 +29,11 @@ const Drop: FunctionalComponent<Props> = ({ animate, parse }) => {
     } else if (parse == "json") {
       options.parse = asJSON;
     }
+    if (!filePicker) {
+      options.filePicker = { enabled: false };
+    }
     return create(container.current, options);
-  }, [container.current, animate, parse]);
+  }, [container.current, animate, parse, filePicker]);
 
   return (
     <>

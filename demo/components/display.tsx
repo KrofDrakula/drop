@@ -4,7 +4,11 @@ import Code from "./code.js";
 import { useCallback, useState } from "preact/hooks";
 import Drop from "./drop.js";
 
-const getCode = (animate: boolean, parse?: "text" | "json") => {
+const getCode = (
+  animate: boolean,
+  parse: "text" | "json" | undefined,
+  filePicker: boolean
+) => {
   const imports = ["create"];
 
   let blocks = "";
@@ -20,6 +24,9 @@ const getCode = (animate: boolean, parse?: "text" | "json") => {
     imports.push("asJSON");
     blocks += `  parse: asJSON,\n`;
   }
+  if (!filePicker) {
+    blocks += `  filePicker: { enabled: false },\n`;
+  }
 
   return `import { ${imports.join(", ")} } from '@krofdrakula/drop';
 
@@ -34,6 +41,7 @@ ${blocks}});
 const Display: FunctionalComponent = () => {
   const [animate, setAnimate] = useState(true);
   const [parse, setParse] = useState(undefined);
+  const [filePicker, setFilePicker] = useState(true);
 
   const handleRadio = useCallback(
     (ev: Parameters<HTMLInputElement["oninput"]>[0]) => {
@@ -100,12 +108,24 @@ const Display: FunctionalComponent = () => {
             </li>
           </ul>
         </div>
+        <div>
+          <label>
+            <input
+              type="checkbox"
+              checked={filePicker}
+              onInput={(ev) =>
+                setFilePicker((ev.target as HTMLInputElement).checked)
+              }
+            />{" "}
+            Use file picker
+          </label>
+        </div>
       </div>
       <div class={styles.live}>
-        <Drop animate={animate} parse={parse} />
+        <Drop animate={animate} parse={parse} filePicker={filePicker} />
       </div>
       <div class={styles.code}>
-        <Code>{getCode(animate, parse)}</Code>
+        <Code>{getCode(animate, parse, filePicker)}</Code>
       </div>
     </div>
   );
