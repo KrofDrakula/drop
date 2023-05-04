@@ -1,3 +1,41 @@
+export interface FilePickerOptions {
+  /**
+   * Enables invoking the file picker when clicking the element.
+   * Defaults to `true`.
+   */
+  enabled?: boolean;
+  /**
+   * A boolean value that defaults to `false`. When set to `true`
+   * multiple files may be selected.
+   * */
+  multiple?: boolean;
+  /**
+   * A boolean value that defaults to `false`. By default the
+   * picker should include an option to not apply any file type
+   * filters (instigated with the `types` option). Setting this
+   * option to `true` means that option is not available.
+   */
+  excludeAllOption?: boolean;
+  /**
+   * An array of allowed file types to pick.
+   */
+  types?: {
+    /**
+     * An object with the keys set to the MIME type and the values
+     * an array of file extensions.
+     * @example
+     * accept: {
+     *   "image/*": [".png", ".jpg", ".jpeg", ".gif"]
+     * }
+     */
+    accept: { [mimeType: string]: string[] };
+    /**
+     * An optional description of the category of files types allowed.
+     */
+    description?: string;
+  }[];
+}
+
 export interface Options<T> {
   /**
    * The function that will be called when files are dropped
@@ -27,6 +65,21 @@ export interface Options<T> {
    * are dropped by the user and the `onDrop` handler fires.
    */
   onDragLeave?: (element: HTMLElement) => void;
+  /**
+   * Fires when the pointer is over the hit box of the element while
+   * not dragging any files.
+   */
+  onEmptyEnter?: (element: HTMLElement) => void;
+  /**
+   * Fires when the pointer leaves the hit box of the element while
+   * not dragging any files.
+   */
+  onEmptyLeave?: (element: HTMLElement) => void;
+  /**
+   * Configures the options for the file picker. When this option
+   * is not given, it will open a file picker with default options.
+   */
+  filePicker?: FilePickerOptions;
 }
 
 const getFilesFromDataTransfer = (dt: DataTransfer): File[] => {
@@ -59,13 +112,9 @@ export const create = <T>(
   element: HTMLElement,
   options: Options<T>
 ): (() => void) => {
-  let isOver = false;
-  const onDrop: HTMLElement["ondrop"] = (ev) => {
-    ev.preventDefault();
-    ev.stopPropagation();
-    isOver = false;
-    options.onDragLeave?.(element);
-    const files = getFilesFromDataTransfer(ev.dataTransfer);
+  let isDraggingOver = false;
+
+  const processFiles = (files: File[]) => {
     if (files.length == 0) return;
     if (options.parse) {
       Promise.all(files.map(options.parse))
@@ -80,30 +129,67 @@ export const create = <T>(
     }
   };
 
+  const onDrop: HTMLElement["ondrop"] = (ev) => {
+    ev.preventDefault();
+    ev.stopPropagation();
+    isDraggingOver = false;
+    options.onDragLeave?.(element);
+    const files = getFilesFromDataTransfer(ev.dataTransfer);
+    processFiles(files);
+  };
+
   const onDragOver: HTMLElement["ondragover"] = (ev) => {
     ev.preventDefault();
-    if (!isOver) {
-      isOver = true;
+    if (!isDraggingOver) {
+      isDraggingOver = true;
       options.onDragOver?.(element);
     }
   };
 
   const onDragLeave: HTMLElement["ondragleave"] = (ev) => {
     ev.preventDefault();
-    if (isOver) {
-      isOver = false;
+    if (isDraggingOver) {
+      isDraggingOver = false;
       options.onDragLeave?.(element);
     }
+  };
+
+  const onEmptyEnter: HTMLElement["onpointerenter"] = (ev) => {
+    if (!isDraggingOver) {
+      options.onEmptyEnter?.(element);
+    }
+  };
+
+  const onEmptyLeave: HTMLElement["onpointerleave"] = (ev) => {
+    if (!isDraggingOver) {
+      options.onEmptyLeave?.(element);
+    }
+  };
+
+  const onClick: HTMLElement["onclick"] = (ev) => {
+    showOpenFilePicker(options.filePicker).then((files) => {
+      Promise.all(files.map((handle) => handle.getFile()))
+        .then(processFiles)
+        .catch(options.onError);
+    });
   };
 
   element.addEventListener("drop", onDrop);
   element.addEventListener("dragover", onDragOver);
   element.addEventListener("dragleave", onDragLeave);
+  if (options.filePicker?.enabled ?? true) {
+    element.addEventListener("click", onClick);
+    element.addEventListener("pointerenter", onEmptyEnter);
+    element.addEventListener("pointerleave", onEmptyLeave);
+  }
 
   return () => {
     options.onDragLeave?.(element);
     element.removeEventListener("drop", onDrop);
     element.removeEventListener("dragover", onDragOver);
     element.removeEventListener("dragleave", onDragLeave);
+    element.removeEventListener("click", onClick);
+    element.removeEventListener("pointerleave", onEmptyLeave);
+    element.removeEventListener("pointerenter", onEmptyEnter);
   };
 };
