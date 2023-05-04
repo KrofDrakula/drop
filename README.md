@@ -34,13 +34,16 @@ The package provides both CommonJS and ES module versions.
 
 The `create` function takes the following options:
 
-| Parameter     |            | Description                                                                                                                                                                                      |
-| ------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `onDrop`      | _required_ | The function that will be called when files are dropped onto the given element. When a `parse` function is provided, the files will be transformed from `File` to whatever the function returns. |
-| `onError`     | _optional_ | An optional error handler that will capture errors produced when calling the `parse` function.                                                                                                   |
-| `parse`       | _optional_ | Allows transforming files before handing the results to the `onDrop` function.                                                                                                                   |
-| `onDragOver`  | _optional_ | Fired when dragging files into the HTML element handling the file drop event.                                                                                                                    |
-| `onDragLeave` | _optional_ | Fired when the user drags files off of the HTML element handling the file drop event. It is also triggered just before files are dropped by the user and the `onDrop` handler fires.             |
+| Parameter       |            | Description                                                                                                                                                                                                                                                                                                 |
+| --------------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `onDrop`        | _required_ | The function that will be called when files are dropped onto the given element. When a `parse` function is provided, the files will be transformed from `File` to whatever the function returns.                                                                                                            |
+| `onError`       | _optional_ | An optional error handler that will capture errors produced when calling the `parse` function.                                                                                                                                                                                                              |
+| `parse`         | _optional_ | Allows transforming files before handing the results to the `onDrop` function.                                                                                                                                                                                                                              |
+| `onDragOver`    | _optional_ | Fired when dragging files into the HTML element handling the file drop event.                                                                                                                                                                                                                               |
+| `onDragLeave`   | _optional_ | Fired when the user drags files off of the HTML element handling the file drop event. It is also triggered just before files are dropped by the user and the `onDrop` handler fires.                                                                                                                        |
+| `filePicker`    | _optional_ | Used to configure the file picker shown when the element is clicked. It is enabled by default but can be disabled by providing `{ enabled: false }`. Other options are passed through to the [`showOpenFilePicker()`](https://developer.mozilla.org/en-US/docs/Web/API/Window/showOpenFilePicker) function. |
+| `onEmptyEnter`  | _optional_ | If the file picker is enabled, this handler fires when the pointer enter the hit box of the element without dragging files.                                                                                                                                                                                 |
+| `onEmptyLeave`  | _optional_ | If the file picker is enabled, this handler fires when the pointer leaves the hit box of the element without dragging files.                                                                                                                                                                                |
 
 ---
 
@@ -77,6 +80,18 @@ create(myDiv, {
   onDragLeave: (element) => element.classList.remove("over"),
 });
 ```
+
+To indicate that the element can also be clicked, you can also add handlers that will enable you to signal that affordance:
+
+```ts
+create(myDiv, {
+  onDrop: () => {},
+  onEmptyEnter: (element) => element.classList.add("hover"),
+  onEmptyLeave: (element) => element.classList.remove("hover"),
+});
+```
+
+Note that these are distinct from the default `hover` event because these handlers will only trigger when the file picker is enabled and the pointer is not dragging any files.
 
 ### Transforming files
 
