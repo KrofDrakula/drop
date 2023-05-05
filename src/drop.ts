@@ -53,7 +53,7 @@ export interface Options<T> {
    * Allows transforming files before handing the results to the
    * `onDrop` function.
    */
-  parse?: (file: File) => Promise<T>;
+  parse?: (file: File) => T | Promise<T>;
   /**
    * Fired when dragging files into the HTML element handling the
    * file drop event.

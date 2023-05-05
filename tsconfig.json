@@ -8,7 +8,9 @@
     "moduleResolution": "nodenext",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact"
   },
   "include": ["src", "examples"]
 }
