@@ -86,7 +86,10 @@ const getFilesFromDataTransfer = (dt: DataTransfer): File[] => {
   if (dt.items) {
     const files: File[] = [];
     for (const item of Array.from(dt.items))
-      if (item.kind == "file") files.push(item.getAsFile());
+      if (item.kind == "file") {
+        const file = item.getAsFile();
+        if (file) files.push(file);
+      }
     return files;
   } else {
     return Array.from(dt.files);
@@ -134,8 +137,10 @@ export const create = <T>(
     ev.stopPropagation();
     isDraggingOver = false;
     options.onDragLeave?.(element);
-    const files = getFilesFromDataTransfer(ev.dataTransfer);
-    processFiles(files);
+    if (ev.dataTransfer) {
+      const files = getFilesFromDataTransfer(ev.dataTransfer);
+      processFiles(files);
+    }
   };
 
   const onDragOver: HTMLElement["ondragover"] = (ev) => {
@@ -154,19 +159,21 @@ export const create = <T>(
     }
   };
 
-  const onEmptyEnter: HTMLElement["onpointerenter"] = (ev) => {
+  const onEmptyEnter: HTMLElement["onpointerenter"] = () => {
     if (!isDraggingOver) {
       options.onEmptyEnter?.(element);
     }
   };
 
-  const onEmptyLeave: HTMLElement["onpointerleave"] = (ev) => {
+  const onEmptyLeave: HTMLElement["onpointerleave"] = () => {
     if (!isDraggingOver) {
       options.onEmptyLeave?.(element);
     }
   };
 
   const onClick: HTMLElement["onclick"] = (ev) => {
+    ev.preventDefault();
+    ev.stopPropagation();
     showOpenFilePicker(options.filePicker).then((files) => {
       Promise.all(files.map((handle) => handle.getFile()))
         .then(processFiles)

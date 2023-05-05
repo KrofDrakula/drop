@@ -5,7 +5,10 @@
     "module": "ESNext",
     "lib": ["DOM", "ESNext"],
     "skipLibCheck": true,
-    "moduleResolution": "nodenext"
+    "moduleResolution": "nodenext",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strictNullChecks": true
   },
   "include": ["src"]
 }
