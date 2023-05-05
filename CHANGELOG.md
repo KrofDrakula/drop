@@ -1,5 +1,11 @@
 # @krofdrakula/drop
 
+## 0.0.9
+
+### Patch Changes
+
+- Improved typing support for create for a better DX
+
 ## 0.0.8
 
 ### Patch Changes
