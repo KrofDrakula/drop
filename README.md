@@ -1,13 +1,13 @@
-# Drop
+# `@krofdrakula/drop`
+
+![Bryan Cranston dropping a mic](https://media.giphy.com/media/3o72Fk2eBOXRDhoq9W/giphy.gif)
+
+A small utility to make consuming files dragged into a browser a breeze.
 
 ![Version](https://badgen.net/npm/v/@krofdrakula/drop)
 ![Types](https://badgen.net/npm/types/@krofdrakula/drop)
 ![GZip size](https://badgen.net/bundlephobia/minzip/@krofdrakula/drop)
 ![Dependency count](https://badgen.net/bundlephobia/dependency-count/@krofdrakula/drop)
-
-A small utility to make consuming files dragged into a browser a breeze.
-
-![Bryan Cranston dropping a mic](https://media.giphy.com/media/3o72Fk2eBOXRDhoq9W/giphy.gif)
 
 [Changelog](CHANGELOG.md)
 
