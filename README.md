@@ -49,23 +49,13 @@ The `create` function takes the following options:
 
 ## Examples
 
-### Simple
-
-To use the package, import the `create` function and pass it an element to activate the required handlers:
-
-```ts
-import { create } from "@krofdrakula/drop";
-
-const myDiv = document.body.querySelector("#drop_target")!;
-
-const deactivate = create(myDiv, {
-  onDrop: (files) => console.log(files),
-});
-```
-
-This will log out all files dropped onto the `#drop_target` element in the console.
-
-Calling the function returned (`deactivate`) will remove the event handlers and reset the element to its previous state.
+- [Read raw files](examples/simple.ts)
+- [Read files as text](examples/read_as_text.ts)
+- [Read files as JSON](examples/read_as_json.ts)
+- [Read files as CSV](examples/read_as_csv.ts)
+- [Use in React-like libraries](examples/preact_example.tsx)
+- [Render images to HTML](examples/display_image.ts)
+- [Draw images to canvas](examples/draw_image_on_canvas.ts)
 
 ### Styling the element
 
@@ -116,26 +106,4 @@ This package currently provides two helper functions to parse files:
 - [`asText`](src/parsers.ts) — transforms each file content into a single string
 - [`asJSON`](src/parsers.ts) — parses each file content into its JSON value
 
-You can pass any function that takes a [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File) object and returns any value.
-
-For example, using a library to parse files and return data is relatively straightforward if the library supports working with `File`s directly:
-
-```ts
-import { create } from '@krofdrakula/drop';
-import Papa from 'papaparse';
-
-const myDiv = document.body.querySelector("#drop_target")!;
-
-create(
-  myDiv,
-  {
-    onDrop: (files) => console.log(files),
-    onError: (err) => console.error(err),
-    parse: (file) => new Promise(
-      (resolve, reject) => Papa.parse(
-        file,
-        { complete: resolve, error: reject }
-      )
-    );
-);
-```
+You can pass any function that takes a [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File) object and returns any value. Refer to the examples above to see how to integrate with a parsing utility.
