@@ -37,6 +37,7 @@ const Drop: FunctionalComponent<Props> = ({ animate, parse, filePicker }) => {
 
   return (
     <>
+      {/* @ts-ignore */}
       <div ref={container} class={styles.drop}>
         <div>Drop files here</div>
       </div>

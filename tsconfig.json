@@ -12,5 +12,5 @@
     "jsx": "react-jsx",
     "jsxImportSource": "preact"
   },
-  "include": ["src", "examples"]
+  "include": ["src", "demo", "examples"]
 }

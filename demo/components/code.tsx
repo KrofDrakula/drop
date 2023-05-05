@@ -15,6 +15,7 @@ const Code: FunctionalComponent<Props> = ({
   children,
 }) => {
   useLayoutEffect(() => {
+    if (!ref.current) return;
     ref.current.textContent = children;
     Prism.highlightElement(ref.current);
   });
@@ -23,6 +24,7 @@ const Code: FunctionalComponent<Props> = ({
 
   return (
     <pre style="border-radius: 8px">
+      {/* @ts-ignore */}
       <code ref={ref} class={`language-${language}`}>
         {children}
       </code>

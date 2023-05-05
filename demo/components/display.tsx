@@ -38,14 +38,18 @@ ${blocks}});
 `;
 };
 
+type NonNull<T> = T extends null ? never : T;
+
+type Parseable = "text" | "json" | undefined;
+
 const Display: FunctionalComponent = () => {
   const [animate, setAnimate] = useState(true);
-  const [parse, setParse] = useState(undefined);
+  const [parse, setParse] = useState<Parseable>(undefined);
   const [filePicker, setFilePicker] = useState(true);
 
   const handleRadio = useCallback(
-    (ev: Parameters<HTMLInputElement["oninput"]>[0]) => {
-      const value = (ev.target as HTMLInputElement).value;
+    (ev: Parameters<NonNull<HTMLInputElement["oninput"]>>[0]) => {
+      const value = (ev.target as HTMLInputElement).value as Parseable;
       setParse(value ? value : undefined);
     },
     []

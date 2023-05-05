@@ -60,7 +60,7 @@ const Preview = <T,>({ files, onClose }: Props<T>): JSX.Element => {
                 ev.preventDefault();
                 setActive(name);
               }}
-              class={active == name ? styles.active : null}
+              class={active == name ? styles.active : undefined}
             >
               {name}
             </a>
