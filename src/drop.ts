@@ -111,7 +111,7 @@ const getFilesFromDataTransfer = (dt: DataTransfer): File[] => {
  *   }
  * );
  */
-export const create = <T>(
+export const create = <T = File>(
   element: HTMLElement,
   options: Options<T>
 ): (() => void) => {
