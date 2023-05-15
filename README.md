@@ -56,6 +56,7 @@ The `create` function takes the following options:
 - [Use in React-like libraries](examples/preact_example.tsx)
 - [Render images to HTML](examples/display_image.ts)
 - [Draw images to canvas](examples/draw_image_on_canvas.ts)
+- [Read a file line-by-line](examples/read_file_line_by_line.ts)
 
 ### Styling the element
 
