@@ -1,7 +1,6 @@
 import { resolve } from "node:path";
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
-import { prismjsPlugin } from "vite-plugin-prismjs";
 
 export default defineConfig(() => {
   return {
