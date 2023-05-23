@@ -49,10 +49,10 @@
     "@types/dom-webcodecs": "^0.1.7",
     "@types/prismjs": "^1.26.0",
     "@types/wicg-file-system-access": "^2020.9.6",
-    "preact": "^10.14.0",
+    "preact": "^10.15.0",
     "prismjs": "^1.29.0",
     "typescript": "^5.0.4",
-    "vite": "^4.3.5",
+    "vite": "^4.3.8",
     "vite-plugin-dts": "^2.3.0",
     "vite-plugin-prismjs": "^0.0.8",
     "vitest": "^0.30.1"
