@@ -1,5 +1,11 @@
 # @krofdrakula/drop
 
+## 1.0.0
+
+### Major Changes
+
+- Releasing version 1.0.0
+
 ## 0.0.9
 
 ### Patch Changes
