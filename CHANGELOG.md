@@ -1,5 +1,11 @@
 # @krofdrakula/drop
 
+## 1.0.1
+
+### Patch Changes
+
+- Fix types not being built correctly
+
 ## 1.0.0
 
 ### Major Changes
