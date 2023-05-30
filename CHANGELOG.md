@@ -1,5 +1,11 @@
 # @krofdrakula/drop
 
+## 1.0.2
+
+### Patch Changes
+
+- Fix misconfiguration for Vite types build
+
 ## 1.0.1
 
 ### Patch Changes
