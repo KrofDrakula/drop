@@ -16,6 +16,6 @@ export default defineConfig(() => {
       emptyOutDir: true,
       reportCompressedSize: true,
     },
-    plugins: [dts({ insertTypesEntry: true })],
+    plugins: [dts({ entryRoot: "src" })],
   };
 });
