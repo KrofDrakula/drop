@@ -6,8 +6,7 @@ A small utility to make consuming files dragged into a browser a breeze.
 
 ![Version](https://badgen.net/npm/v/@krofdrakula/drop)
 ![Types](https://badgen.net/npm/types/@krofdrakula/drop)
-![GZip size](https://badgen.net/bundlephobia/minzip/@krofdrakula/drop)
-![Dependency count](https://badgen.net/bundlephobia/dependency-count/@krofdrakula/drop)
+![GZip size](https://img.shields.io/bundlephobia/minzip/%40krofdrakula%2Fdrop)
 
 [Changelog](CHANGELOG.md)
 
