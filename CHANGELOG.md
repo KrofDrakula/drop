@@ -1,5 +1,11 @@
 # @krofdrakula/drop
 
+## 1.0.3
+
+### Patch Changes
+
+- Correct a minor type misconfiguration for TypeScript
+
 ## 1.0.2
 
 ### Patch Changes
