@@ -1,5 +1,11 @@
 # @krofdrakula/drop
 
+## 1.0.5
+
+### Patch Changes
+
+- Correct file path in package
+
 ## 1.0.4
 
 ### Patch Changes
