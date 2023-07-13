@@ -1,5 +1,11 @@
 # @krofdrakula/drop
 
+## 1.0.4
+
+### Patch Changes
+
+- Correct the published version mismatch
+
 ## 1.0.3
 
 ### Patch Changes
